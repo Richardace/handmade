@@ -1,0 +1,120 @@
+<html>
+    <title>Administrador: Producto</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style2.css') }}>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <body>
+
+         <div class="top-container">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 70%;">
+                        <h1 style="font-size: 18;">Sistema de Gestión</h1>
+                        <p>Inventario de Accesorios</p>
+                    </td>
+
+                    <td>
+                        <input type="text" name="search" placeholder="Buscar..." class="search">
+                    </td>
+                    <td style="width: 5%;">
+                        <div>
+                            <input type="checkbox" id="show">
+                            <label for="show" class="show-btn"><img src={{ url_for('static', filename='img/profile.png') }} alt="profile" width="43"></label>
+                            <div class="container">
+                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                <div class="text">Administrador</div>
+                                <form action="#">
+                                    <div class="data">
+                                        <label>Nombre:</label>
+                                        <label>Katherine Velilla</label>
+                                    </div>
+                                    <div class="data">
+                                        <label>Usuario:</label>
+                                        <label>kvelilla1</label>
+                                    </div>
+                                    <div class="signup-link">
+                                        <a href="#">Modificar contraseña</a>
+                                    </div>
+                                    <div class="signup-link">
+                                        <a href="#">Modificar imágen</a>
+                                    </div>
+                                    <div class="btn">
+                                        <div class="inner"></div>
+                                        <button type="submit">Cerrar sesión</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br><br><br><br><br>
+
+        <div class="center" style="width: 70%; padding: 60px 120px;">
+            <form>
+                <table>
+                    <div style="font-size: 35px; font-weight: 600; text-align: center; margin-bottom: -30px">Modificar Usuario</div>
+                    <tr><td style="text-align: center">
+                        <div class="gallery">
+                            <a target="_blank" href={{ url_for('static', filename='img/male.png') }}>
+                                <img src={{ url_for('static', filename='img/male.png') }} alt="usuario">
+                            </a>
+                        </div>
+                    </td><td>
+                        <div class="data1">
+                            <label>Nombre:</label>
+                            <input type="text" name="nombre" id="nombre" placeholder="Usuario 1 Handmade Jewellery" required>
+                        </div>
+                        <div class="data1">
+                            <label>Nombre de usuario:</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Usuario 1" required>
+                        </div>
+                        <div class="data1">
+                            <label>Correo electrónico:</label>
+                            <input type="email" name="correo" id="correo" placeholder="usuario1@handmade.com" required>
+                        </div>
+                        <div class="data1">
+                            <label>Contraseña:</label>
+                            <input type="password" name="contraseña" id="contraseña" placeholder="ABCD1234" required>
+                        </div>
+                    </td></tr>
+
+                    <tr><td colspan="2" style="text-align: center">
+                        <div style="text-align: center">
+                            <input type="checkbox" name="casilla_administrador" style="display:initial;"> Administrador
+                        </div>
+                    </td></tr>
+
+                    <tr><td style="text-align: center; width: 50%">
+                        <input type="submit" value="MODIFICAR USUARIO" class="button"></td><td style="text-align: center">
+                        <input type="submit" value="ELIMINAR USUARIO" class="button">
+                    </td></tr>
+                </table>
+            </form>
+        </div>
+
+        <ul>
+            <li><a href="{{ url_for('inicio_administrador') }}">INICIO</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">INVENTARIO</a>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('agregar_accesorio') }}">Agregar accesorio</a>
+                  <a href="{{ url_for('ver_inventario') }}">Modificar accesorio</a>
+                  <a href="{{ url_for('ver_inventario') }}">Ver inventario</a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">USUARIOS</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('registrar_usuario') }}">Registrar usuario</a>
+                <a href="{{ url_for('ver_usuarios') }}">Modificar usuario</a>
+                <a href="{{ url_for('ver_usuarios') }}">Ver usuarios registrados</a>
+              </div>
+            </li>
+        </ul>
+
+    </body>
+
+</html>

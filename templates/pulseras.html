@@ -1,0 +1,86 @@
+<html>
+    <title>Pulseras</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style2.css') }}>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <body>
+
+        <div class="top-container">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 70%;">
+                        <h1 style="font-size: 18;">Sistema de Gestión</h1>
+                        <p>Inventario de Accesorios</p>
+                    </td>
+
+                    <td>
+                        <input type="text" name="search" placeholder="Buscar..." class="search">
+                    </td>
+                    <td style="width: 5%;">
+                        <div>
+                            <input type="checkbox" id="show">
+                            <label for="show" class="show-btn"><img src={{ url_for('static', filename='img/profile.png') }} alt="profile" width="43"></label>
+                            <div class="container">
+                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                <div class="text">Usuario</div>
+                                <form action="#">
+                                    <div class="data">
+                                        <label>Nombre:</label>
+                                        <label>{{session['name']}}</label>
+                                    </div>
+                                    <div class="data">
+                                        <label>Usuario:</label>
+                                        <label>{{session['userName']}}</label>
+                                    </div>
+                                    <div class="btn">
+                                        <div class="inner"></div>
+                                        <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br><br><br><br><br><br><br><br>
+
+        <div style="font-size: 35px; font-weight: 600; text-align: center;">Pulseras</div>
+        <div class="container2">
+            {% for a in accesorioto %}
+                <div class="gallery">
+                    <a target="_blank" href="{{ url_for('producto_administrador', id=a[0]) }}">
+
+                        <img src={{ url_for('static', filename='img/imgProductos/'+a[4]+'') }} width="300" height="200" alt="" class="item2-img">
+                    </a>
+                    <div class="item2-text">
+                        <h3>{{ a[2] }}</h3>
+                        <p>#REF: {{ a[1] }}</p>
+                        <p>Cantidad: {{ a[3] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <ul>
+            <li><a href="{{ url_for('inicio_administrador') }}">INICIO</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">INVENTARIO</a>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('agregar_accesorio') }}">Agregar accesorio</a>
+                  <a href="{{ url_for('inventarioAdministrador') }}">Ver inventario</a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">USUARIOS</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('registrar_usuario') }}">Registrar usuario</a>
+                <a href="{{ url_for('usuariosAdministador') }}">Ver usuarios registrados</a>
+              </div>
+            </li>
+        </ul>
+
+    </body>
+</html>

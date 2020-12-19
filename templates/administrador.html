@@ -1,0 +1,120 @@
+<html>
+    <title>Administrador</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style2.css') }}>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+    <body>
+
+<div class="top-container">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 70%;">
+                        <h1 style="font-size: 18px;">Sistema de Gestión</h1>
+                        <p>Inventario de Accesorios</p>
+
+                    </td>
+
+                    <td>
+                        <input type="text" name="search" placeholder="Buscar..." class="search">
+                    </td>
+                    <td style="width: 5%;">
+                        <div>
+                            <input type="checkbox" id="show">
+                            <label for="show" class="show-btn"><img src={{ url_for('static', filename='img/profile.png') }} alt="profile" width="43"></label>
+                            <div class="container">
+                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                <div class="text">Usuario</div>
+                                <form action="#">
+                                    <div class="data">
+                                        <label>Nombre:</label>
+                                        <label>{{session['name']}}</label>
+                                    </div>
+                                    <div class="data">
+                                        <label>Usuario:</label>
+                                        <label>{{session['userName']}}</label>
+                                    </div>
+                                    <div class="btn">
+                                        <div class="inner"></div>
+                                        <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <!-- FIN CABEZERA ADMIN -->
+        <br><br><br><br><br><br><br><br><br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                    </div>
+                {% endfor  %}
+            {% endif %}
+        {% endwith %}
+
+        <table style="margin: auto">
+            <tr><td>
+                <div class="gallery">
+                    <a target="_blank" href="{{ url_for('aretes') }}">
+                        <img src={{ url_for('static', filename='img/aretes.jpg') }} alt="aretes" width="600" height="400">
+                    </a>
+                    <div class="desc">ARETES</div>
+                </div>
+            </td><td>
+                <div class="gallery">
+                    <a target="_blank" href="{{ url_for('collares') }}">
+                        <img src={{ url_for('static', filename='img/collares.jpg') }} alt="collares" width="600" height="400" >
+                    </a>
+                    <div class="desc">COLLARES</div>
+                </div>
+            </td><td>
+                <div class="gallery">
+                    <a target="_blank" href="{{ url_for('pulseras') }}">
+                        <img src={{ url_for('static', filename='img/pulseras.jpg') }} alt="pulseras" width="600" height="400">
+                    </a>
+                    <div class="desc">PULSERAS</div>
+                </div>
+            </td><td>
+                <div class="gallery">
+                    <a target="_blank" href="{{ url_for('anillos') }}">
+                        <img src={{ url_for('static', filename='img/anillos.jpg') }} alt="anillos" width="600" height="400">
+                    </a>
+                    <div class="desc">ANILLOS</div>
+                </div>
+            </td></tr>
+        </table>
+
+        <ul>
+            <li><a href="{{ url_for('inicio_administrador') }}">INICIO</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">INVENTARIO</a>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('agregar_accesorio') }}">Agregar accesorio</a>
+                  <a href="{{ url_for('inventarioAdministrador') }}">Ver inventario</a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">USUARIOS</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('registrar_usuario') }}">Registrar usuario</a>
+                <a href="{{ url_for('usuariosAdministador') }}">Ver usuarios registrados</a>
+              </div>
+            </li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+
+    {% endblock %}
+  </head>
+  <body>
+    <div class="top-container">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 70%;">
+                        <h1 style="font-size: 18px;">Sistema de Gestión</h1>
+                        <p>Inventario de Accesorios</p>
+                    </td>
+
+                    <td>
+                        <input type="text" name="search" placeholder="Buscar..." class="search">
+                    </td>
+                    <td style="width: 5%;">
+                        <div>
+                            <input type="checkbox" id="show">
+                            <label for="show" class="show-btn"><img src={{ url_for('static', filename='img/profile.png') }} alt="profile" width="43"></label>
+                            <div class="container">
+                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                <div class="text">Usuario</div>
+                                <form action="#">
+                                    <div class="data">
+                                        <label>Nombre:</label>
+                                        <label>Richard Acevedo</label>
+                                    </div>
+                                    <div class="data">
+                                        <label>Usuario:</label>
+                                        <label>kvelilla1</label>
+                                    </div>
+                                    <div class="signup-link">
+                                        <a href="#">Modificar contraseña</a>
+                                    </div>
+                                    <div class="signup-link">
+                                        <a href="#">Modificar imágen</a>
+                                    </div>
+                                    <div class="btn">
+                                        <div class="inner"></div>
+                                        <button type="submit">Cerrar sesión</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+  </body>
+</html>
+

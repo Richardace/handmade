@@ -1,0 +1,104 @@
+<html>
+    <title>Administrador: Registrar usuario</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style2.css') }}>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <body>
+        
+        <div class="top-container">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 70%;">
+                        <h1 style="font-size: 18;">Sistema de Gestión</h1>
+                        <p>Inventario de Accesorios</p>
+                    </td>
+                    
+                    <td>
+                        <input type="text" name="search" placeholder="Buscar..." class="search">
+                    </td>
+                    <td style="width: 5%;">
+                        <div>
+                            <input type="checkbox" id="show">
+                            <label for="show" class="show-btn"><img src={{ url_for('static', filename='img/profile.png') }} alt="profile" width="43"></label>
+                            <div class="container">
+                                <label for="show" class="close-btn fas fa-times" title="close"></label>
+                                <div class="text">Usuario</div>
+                                <form action="#">
+                                    <div class="data">
+                                        <label>Nombre:</label>
+                                        <label>{{session['name']}}</label>
+                                    </div>
+                                    <div class="data">
+                                        <label>Usuario:</label>
+                                        <label>{{session['userName']}}</label>
+                                    </div>
+                                    <div class="btn">
+                                        <div class="inner"></div>
+                                        <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br><br><br><br><br><br><br>
+
+        <table style="margin: auto">
+            <tr><td>
+                <div>
+                    <div style="font-size: 35px; font-weight: 600; text-align: center;">Registrar Usuario</div>
+                    <form style="margin-top: -30px" name="registro" method="post" action="{{ url_for('registro')}}">
+                        <div class="data1">
+                            <label>Nombre:</label>
+                            <input type="text" name="name" id="usuario" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="data1">
+                            <label>Nombre de usuario:</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Usuario" required>
+                        </div>
+                        <div class="data1">
+                            <label>Correo electrónico:</label>
+                            <input type="email" name="correo" id="correo" placeholder="ejemplo@ejemplo.com" required>
+                        </div>
+                        <div class="data1">
+                            <label>Contraseña:</label>
+                            <input type="password" name="password" id="contraseña" placeholder="Contraseña" required>
+                        </div>
+                        <!-- <div class="data1">
+                            <label>Imagen:</label>
+                            <input type="file" name="imagen" id="imagen" required style="padding: 8px 12px;">
+                        </div> -->
+                        <div style="text-align: center;">
+                            <input type="checkbox" name="casilla_administrador" style="display:initial;"> Administrador
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="REGISTRAR USUARIO" class="button">
+                        </div>
+                    </form>
+                </div>
+            </td></tr>
+        </table>
+
+        <ul>
+            <li><a href="{{ url_for('inicio_administrador') }}">INICIO</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">INVENTARIO</a>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('agregar_accesorio') }}">Agregar accesorio</a>
+                  <a href="{{ url_for('inventarioAdministrador') }}">Ver inventario</a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">USUARIOS</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('registrar_usuario') }}">Registrar usuario</a>
+                <a href="{{ url_for('usuariosAdministador') }}">Ver usuarios registrados</a>
+              </div>
+            </li>
+        </ul>
+
+    </body>
+</html>
